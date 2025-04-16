@@ -12,14 +12,14 @@ def abrir_dashboard():
     dashboard_frame.grid()
 
 def verificar_login():
-    '''usuario = entrada_usuario.get()
+    usuario = entrada_usuario.get()
     senha = entrada_senha.get()
 
     if usuario == 'admin' and senha == '1234':
         messagebox.showinfo("Login", "Login bem-sucedido")
         abrir_dashboard()
     else:
-        messagebox.showerror("Erro", "Usuario ou senha incorretos.")'''
+        messagebox.showerror("Erro", "Usuario ou senha incorretos.")
     abrir_dashboard()
 
 def atualizar_rolagem_tabela(event):
