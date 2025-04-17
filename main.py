@@ -12,14 +12,14 @@ def abrir_dashboard():
     dashboard_frame.grid()
 
 def verificar_login():
-    usuario = entrada_usuario.get()
+    '''usuario = entrada_usuario.get()
     senha = entrada_senha.get()
 
     if usuario == 'admin' and senha == '1234':
         messagebox.showinfo("Login", "Login bem-sucedido")
         abrir_dashboard()
     else:
-        messagebox.showerror("Erro", "Usuario ou senha incorretos.")
+        messagebox.showerror("Erro", "Usuario ou senha incorretos.")'''
     abrir_dashboard()
 
 def atualizar_rolagem_tabela(event):
@@ -101,13 +101,13 @@ dashboard_frame = ttk.Frame(root, padding=(20, 10, 20, 10))
 # Dashboard
 ttk.Label(dashboard_frame, text="Dashboard", font=("Consolas", 18)).grid(row=0, column=0, pady=10, sticky='w')
 
-# Layout
+# Layout (Ordem | Nome | Procedimento | Medico | Data | Horario | Telefone | SUS)
 # Pacientes
-ttk.Label(dashboard_frame, text="Pacientes").grid(row=1, column=0, pady=10, sticky='w')
+ttk.Label(dashboard_frame, text=" Id |       Nome       |   Procedimento   |   Medico   |    Data    |   Horario   |   Telefone   |   SUS   ").grid(row=1, column=0, pady=10, sticky='nsew')
 
 # Informacoes
 #Configuracoes de Tela e rolagem
-canvas = Canvas(dashboard_frame, width=1200, height=500, background='White', highlightbackground='Black')
+canvas = Canvas(dashboard_frame, width=1200, height=500, background='Black', highlightbackground='White')
 canvas.grid(row=2, column=0, sticky='nsew')
 
 barra_rolagem = ttk.Scrollbar(dashboard_frame, orient='vertical', command=canvas.yview, style="Custom.Vertical.TScrollbar")
@@ -122,7 +122,8 @@ tabela_frame.bind("<Configure>", atualizar_rolagem_tabela)
 canvas.bind_all("<MouseWheel>", rolagem_mouse)
 
 for i in range(50):
-    ttk.Label(tabela_frame, text=f"Item{i+1}").grid(padx=5, pady=5)
+    ttk.Label(tabela_frame, text=f"{i+1}").grid(row=i, column=0, padx=5, pady=5)
+    ttk.Label(tabela_frame, text=f"Medicine{i+1}").grid(row=i, column=1, padx=5, pady=5)
 
 #Conteudo
 
@@ -130,9 +131,9 @@ for i in range(50):
 ttk.Label(dashboard_frame).grid(row=3, column=0, pady=5)
 
 # Botoes
-ttk.Button(dashboard_frame, text="Excluir", style='Custom.TButton').grid(row=4, column=0, sticky='w')
-ttk.Button(dashboard_frame, text="Editar", style='Custom.TButton').grid(row=4, column=1, sticky='w')
-ttk.Button(dashboard_frame, text="Criar", style='Custom.TButton').grid(row=4, column=2, sticky='w')
+ttk.Button(dashboard_frame, text="Excluir", style='Custom.TButton').grid(row=4, column=0, padx=(505, 0))
+ttk.Button(dashboard_frame, text="Editar", style='Custom.TButton').grid(row=4, column=0, padx=(800, 0))
+ttk.Button(dashboard_frame, text="Criar", style='Custom.TButton').grid(row=4, column=0, sticky='e')
 
 
 root.mainloop()
